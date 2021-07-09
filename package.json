@@ -1,0 +1,19 @@
+{
+  "name": "rs-bed-availability",
+  "version": "1.0.0",
+  "description": "API Informasi Rawat Inap Rumah Sakit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@vercel/node": "^1.11.1"
+  },
+  "dependencies": {
+    "@zeit/fetch-retry": "^5.0.1",
+    "cheerio": "^1.0.0-rc.10",
+    "unirest": "^0.6.0"
+  }
+}
