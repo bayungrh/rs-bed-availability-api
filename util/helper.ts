@@ -35,7 +35,7 @@ export const extractInfoNonCovid = (body: string) => {
       });
     });
     data.push({
-      id: rsID,
+      hospital_code: rsID,
       hospital_name: name,
       address,
       hotline,
@@ -61,7 +61,7 @@ export const extractInfoCovid = (body: string) => {
     const bedDetail = $(elem).find('.card-footer > div').find('a').attr('href');
     const rsID = getQueryString(bedDetail, 'kode_rs');
     data.push({
-      id: rsID,
+      hospital_code: rsID,
       hospital_name: name,
       address,
       hotline,

@@ -30,8 +30,8 @@ export const fetchNonCovid = (endpoint: string, query: object) => {
   });
 }
 
-export const fetchBed = (hospitalID: string) => {
+export const fetchBed = (hospitalCode: string) => {
   return fetchEndpoint('tempat_tidur', {
-    kode_rs: hospitalID
+    kode_rs: hospitalCode
   });
 }
