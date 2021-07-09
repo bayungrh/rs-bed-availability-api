@@ -89,9 +89,9 @@ export const extractInfoBed = (body: string) => {
     const bedAvailable = $(elem).find('.col-md-4:nth-child(2)');
     const bedQueue = $(elem).find('.col-md-4:nth-child(3)');
     beds.push({
-      name: p[1].trim(),
+      room_name: p[1].trim(),
       quota: bedQuota.find('div > div:nth-child(2)').text(),
-      avaiable: bedAvailable.find('div > div:nth-child(2)').text(),
+      available: bedAvailable.find('div > div:nth-child(2)').text(),
       queue: bedQueue.find('div > div:nth-child(2)').text() || '-',
       updated_at: p[2].trim().replace('Update ', '')
     });
