@@ -10,7 +10,10 @@ export default async (request: VercelRequest, response: VercelResponse) => {
       kabkota: kota == '0' ? '' : kota
     });
     const rsList = extractInfoCovid(res.body, request.query);
-    response.json(rsList);
+    response.json({
+      type: 'covid',
+      result: rsList
+    });
   } catch (error) {
     response.status(500).json({
       statusCode: 500,

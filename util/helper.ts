@@ -24,23 +24,23 @@ export const extractInfoNonCovid = (body: string) => {
     const bedElements = $(elem).find('.col-md-4');
     const bedDetail = $(elem).find('.card-footer > div').find('a').attr('href');
     const rsID = getQueryString(bedDetail, 'kode_rs');
-    const beds = [];
+    const rooms = [];
     bedElements.each((_, bed) => {
       const bedBody = $(bed).find('.card-body');
-      beds.push({
-        available: bedBody.find('div:nth-child(1)').text().trim(),
+      rooms.push({
+        room_name: bedBody.find('div:nth-child(3)').text().trim().replace('Di ', ''),
         class: bedBody.find('div:nth-child(2)').text().trim().replace('Bed Kosong ', ''),
-        room: bedBody.find('div:nth-child(3)').text().trim().replace('Di ', ''),
+        available: bedBody.find('div:nth-child(1)').text().trim(),
         updated_at: $(bed).find('.card-footer > div').text().trim().replace('diupdate ', '')
       });
     });
     data.push({
       id: rsID,
-      name,
+      hospital_name: name,
       address,
       hotline,
       detail: `/api/bed-detail/${rsID}`,
-      beds
+      rooms
     });
   });
   return data;
@@ -62,11 +62,11 @@ export const extractInfoCovid = (body: string) => {
     const rsID = getQueryString(bedDetail, 'kode_rs');
     data.push({
       id: rsID,
-      name,
+      hospital_name: name,
       address,
       hotline,
       detail: `/api/bed-detail/${rsID}`,
-      info1: infoBed1,
+      info1: infoBed1.split(/\s/g).filter((f) => f).join(' '),
       info2: infoBed2,
       updated_at: updatedAt
     });
@@ -97,7 +97,7 @@ export const extractInfoBed = (body: string) => {
     });
   });
   return {
-    name,
+    hospital_name: name,
     address,
     hotline,
     availibility: beds
