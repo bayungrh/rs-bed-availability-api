@@ -9,7 +9,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
       propinsi: propinsi ? `${propinsi}prop` : '',
       kabkota: kota == '0' ? '' : kota
     });
-    const rsList = extractInfoNonCovid(res.body, request.query);
+    const rsList = extractInfoNonCovid(res.body);
     response.json({
       type: 'non-covid',
       result: rsList
