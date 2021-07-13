@@ -5,7 +5,7 @@ import cache from 'memory-cache';
 
 export default async (request: VercelRequest, response: VercelResponse) => {
   const { hospital_id } = request.query;
-  const cacheKey = `API:BED_DETAIL/:${hospital_id}`;
+  const cacheKey = `API:BED_DETAIL/${hospital_id}`;
   const cacheValue = cache.get(cacheKey);
 
   if(cacheValue) {

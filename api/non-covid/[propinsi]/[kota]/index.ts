@@ -6,7 +6,7 @@ import cache from 'memory-cache';
 export default async (request: VercelRequest, response: VercelResponse) => {
   try {
     const { propinsi, kota } = request.query;
-    const cacheKey = `API:NON-COVID/:${propinsi}:${kota}`;
+    const cacheKey = `API:NON-COVID/${propinsi}:${kota}`;
     const cacheValue = cache.get(cacheKey);
 
     if(cacheValue) {
